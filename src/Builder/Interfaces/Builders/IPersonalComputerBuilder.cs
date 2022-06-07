@@ -7,11 +7,11 @@ namespace Design.Patterns.Builder.Interfaces.Builders
         IPersonalComputerBuilder AddProcessor(Processor processor);
         IPersonalComputerBuilder AddMotherBoard(MotherBoard motherBoard);
         IPersonalComputerBuilder AddMemory(Memory memory);
-        IPersonalComputerBuilder AddMemories(IList<Memory> memories);
+        IPersonalComputerBuilder AddMemories(IEnumerable<Memory> memories);
         IPersonalComputerBuilder AddStorage(Storage storage);
-        IPersonalComputerBuilder AddStorages(IList<Storage> storages);
+        IPersonalComputerBuilder AddStorages(IEnumerable<Storage> storages);
         IPersonalComputerBuilder AddGraphicCard(GraphicCard graphicCard);
-        IPersonalComputerBuilder AddPower(Power power);
+        IPersonalComputerBuilder AddPowerSupply(PowerSupply power);
         PersonalComputer Build();
     }
 }

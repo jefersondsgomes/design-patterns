@@ -7,6 +7,6 @@
         public IList<Memory>? Memories { get; set; }
         public IList<Storage>? Storages { get; set; }
         public GraphicCard? GraphicCard { get; set; }
-        public Power? Power { get; set; }
+        public PowerSupply? Power { get; set; }
     }
 }

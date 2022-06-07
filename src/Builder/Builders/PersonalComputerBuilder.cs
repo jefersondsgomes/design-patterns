@@ -10,7 +10,7 @@ namespace Design.Patterns.Builder.Builders
         protected IList<Memory>? Memories { get; set; }
         protected IList<Storage>? Storages { get; set; }
         protected GraphicCard? GraphicCard { get; set; }
-        protected Power? Power { get; set; }
+        protected PowerSupply? Power { get; set; }
 
         public PersonalComputerBuilder()
         {
@@ -36,7 +36,7 @@ namespace Design.Patterns.Builder.Builders
             return this;
         }
 
-        public IPersonalComputerBuilder AddMemories(IList<Memory> memories)
+        public IPersonalComputerBuilder AddMemories(IEnumerable<Memory> memories)
         {
             foreach (var memory in memories)
                 Memories!.Add(memory);
@@ -50,7 +50,7 @@ namespace Design.Patterns.Builder.Builders
             return this;
         }
 
-        public IPersonalComputerBuilder AddStorages(IList<Storage> storages)
+        public IPersonalComputerBuilder AddStorages(IEnumerable<Storage> storages)
         {
             foreach (var storage in storages)
                 Storages!.Add(storage);
@@ -64,7 +64,7 @@ namespace Design.Patterns.Builder.Builders
             return this;
         }
 
-        public IPersonalComputerBuilder AddPower(Power power)
+        public IPersonalComputerBuilder AddPowerSupply(PowerSupply power)
         {
             Power = power;
             return this;
