@@ -8,8 +8,4 @@
 		<RootNamespace>Design.Patterns.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\Builder\Builder.csproj" />
-	</ItemGroup>
-
 </Project>
