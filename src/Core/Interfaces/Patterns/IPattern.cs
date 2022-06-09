@@ -2,7 +2,7 @@
 {
     public interface IPattern
     {
+        void Describe();
         void Execute();
-        void ShowDescription();
     }
 }

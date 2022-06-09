@@ -13,7 +13,14 @@ namespace Design.Patterns.App
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            throw new NotImplementedException();
+            var patternKind = Menu.Show();
+            var pattern = _resolver.Resolve(patternKind);
+
+            pattern.Describe();
+            pattern.Execute();
+
+            Environment.Exit(0);
+            return Task.CompletedTask;
         }
     }
 }

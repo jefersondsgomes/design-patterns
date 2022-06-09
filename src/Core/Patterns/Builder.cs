@@ -13,10 +13,17 @@ namespace Design.Patterns.Core.Patterns
             _builder = builder;
         }
 
+        public void Describe()
+        {
+            Console.WriteLine("Description:");
+            var description = "The Builder Pattern simplifies building complex objects through subdivision of his parts.";
+            Console.WriteLine(description);
+            Console.WriteLine(Environment.NewLine);
+        }
+
         public void Execute()
         {
-            Console.WriteLine("--- BUILDER ---");
-
+            Console.WriteLine("Example:");
             Console.WriteLine("Creating processor...");
             _builder.AddProcessor(HardwareVendor.ProvideProcessor());
 
@@ -36,16 +43,7 @@ namespace Design.Patterns.Core.Patterns
             _builder.AddPowerSupply(HardwareVendor.ProvidePowerSupply());
 
             Console.WriteLine("Building personal computer...");
-            _builder.Build();
-        }
-
-        public void ShowDescription()
-        {
-            var description = @"
-                The Builder Pattern simplifies building complex objects 
-                through subdivision of his parts.";
-
-            Console.WriteLine(description);
+            _ = _builder.Build();
         }
     }
 }
