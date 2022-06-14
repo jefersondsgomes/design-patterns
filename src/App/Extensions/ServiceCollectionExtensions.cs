@@ -13,9 +13,17 @@ namespace Design.Patterns.App.Extensions
             services
                 .AddSingleton<IPatternResolver, PatternResolver>()
                 .AddSingleton<IPattern, Core.Patterns.Builder>()
-                .AddSingleton<IPersonalComputerBuilder, PersonalComputerBuilder>();
+                .AddBuilder();
 
             return services;
         }
+
+        private static IServiceCollection AddBuilder(this IServiceCollection services)
+        {
+            services
+                .AddSingleton<IPersonalComputerBuilder, PersonalComputerBuilder>();
+
+            return services;
+        }   
     }
 }
