@@ -11,5 +11,13 @@ namespace Design.Patterns.ChainOfResponsability.Extensions
 
             return customer.Created.Value.Month <= 1;
         }
+
+        public static bool ItsOver3Years(this Customer customer)
+        {
+            if (customer?.Created == null)
+                return false;
+
+            return customer.Created.Value.Year > 3;
+        }
     }
 }

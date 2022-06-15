@@ -9,6 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\ChainOfResponsability\ChainOfResponsability.csproj" />
 	  <ProjectReference Include="..\Builder\Builder.csproj" />
 	</ItemGroup>
 

@@ -4,12 +4,12 @@ using Design.Patterns.ChainOfResponsability.Models;
 
 namespace Design.Patterns.ChainOfResponsability.Chains.Handlers
 {
-    public class ValueHandler : IDiscountHandler
+    public class Over3YearsCustomerHandler : IDiscountHandler
     {
         public IDiscountHandler NextDiscount { get; protected set; }
         public bool IsCumulative { get; protected set; }
 
-        public ValueHandler(IDiscountHandler nextDiscount, bool isCumulative)
+        public Over3YearsCustomerHandler(IDiscountHandler nextDiscount, bool isCumulative)
         {
             NextDiscount = nextDiscount;
             IsCumulative = isCumulative;
@@ -17,13 +17,7 @@ namespace Design.Patterns.ChainOfResponsability.Chains.Handlers
 
         public double Discount(Customer customer, Order order, double discount)
         {
-            var orderValue = order.GetValue();
-            var currentDiscount = 0.0;
-
-            if (orderValue > 1000)
-                currentDiscount = 5.0;
-            else if (orderValue > 500)
-                currentDiscount = 2.0;
+            var currentDiscount = customer.ItsOver3Years() ? 5.0 : 0.0;
 
             if (IsCumulative)
             {

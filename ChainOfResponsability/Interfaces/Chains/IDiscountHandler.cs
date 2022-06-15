@@ -6,6 +6,6 @@ namespace Design.Patterns.ChainOfResponsability.Interfaces.Chains
     {
         IDiscountHandler NextDiscount { get; }
         bool IsCumulative { get; }
-        double Discount(Order order);
+        double Discount(Customer customer, Order order, double discount);
     }
 }

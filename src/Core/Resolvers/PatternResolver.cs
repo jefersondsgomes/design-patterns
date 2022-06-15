@@ -19,6 +19,8 @@ namespace Design.Patterns.Core.Resolvers
             {
                 case PatternKind.Builder:
                     return _patterns.SingleOrDefault(x => x.GetType().Equals(typeof(Patterns.Builder)))!;
+                case PatternKind.ChainOfResponsability:
+                    return _patterns.SingleOrDefault(x => x.GetType().Equals(typeof(Patterns.ChainOfResponsability)))!;
                 default:
                     throw new NotImplementedException(pattern.ToString());
             }
