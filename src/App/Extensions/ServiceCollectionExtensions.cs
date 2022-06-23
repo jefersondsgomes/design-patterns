@@ -14,18 +14,8 @@ namespace Design.Patterns.App.Extensions
         {
             services
                 .AddSingleton<IPatternResolver, PatternResolver>()
-                .AddPatterns()
                 .AddBuilder()
                 .AddChainOfResponsability();
-
-            return services;
-        }
-
-        private static IServiceCollection AddPatterns(this IServiceCollection services)
-        {
-            services
-                .AddSingleton<IPattern, Core.Patterns.Builder>()
-                .AddSingleton<IPattern, Core.Patterns.ChainOfResponsability>();
 
             return services;
         }
@@ -33,6 +23,7 @@ namespace Design.Patterns.App.Extensions
         private static IServiceCollection AddBuilder(this IServiceCollection services)
         {
             services
+                .AddSingleton<IPattern, Core.Patterns.Builder>()
                 .AddSingleton<IPersonalComputerBuilder, PersonalComputerBuilder>();
 
             return services;
@@ -41,6 +32,7 @@ namespace Design.Patterns.App.Extensions
         private static IServiceCollection AddChainOfResponsability(this IServiceCollection services)
         {
             services
+                .AddSingleton<IPattern, Core.Patterns.ChainOfResponsability>()
                 .AddSingleton(new DefaultHandler())
                 .AddSingleton(sp => new ValueHandler(sp.GetService<DefaultHandler>()!, true))
                 .AddSingleton(sp => new PaymentHandler(sp.GetService<ValueHandler>()!, true))
