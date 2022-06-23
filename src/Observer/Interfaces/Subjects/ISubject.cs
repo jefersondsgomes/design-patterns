@@ -1,11 +1,11 @@
-﻿using Design.Patterns.Observer.Models;
+﻿using Design.Patterns.Observer.Interfaces.Observers;
 
 namespace Design.Patterns.Observer.Interfaces.Subjects
 {
     public interface ISubject
     {
-        void Attach(User user);
-        void Detach(User user);
-        void Notify(NewsLetter newsLetter);
+        void Attach(IObserver user);
+        void Detach(IObserver user);
+        void Notify();
     }
 }

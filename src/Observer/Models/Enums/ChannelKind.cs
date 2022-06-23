@@ -1,9 +1,9 @@
 ﻿namespace Design.Patterns.Observer.Models.Enums
 {
-    public enum Channel
+    public enum ChannelKind
     {
         Email = 1,
-        WhatsApp = 2,
-        Push = 3
+        Push = 2,
+        WhatsApp = 3
     }
 }
