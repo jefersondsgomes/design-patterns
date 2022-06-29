@@ -15,7 +15,8 @@ namespace Design.Patterns.App.Extensions
             services
                 .AddSingleton<IPatternResolver, PatternResolver>()
                 .AddBuilder()
-                .AddChainOfResponsability();
+                .AddChainOfResponsability()
+                .AddObserver();
 
             return services;
         }
@@ -39,6 +40,14 @@ namespace Design.Patterns.App.Extensions
                 .AddSingleton(sp => new Over3YearsCustomerHandler(sp.GetService<PaymentHandler>()!, true))
                 .AddSingleton(sp => new NewCustomerHandler(sp.GetService<Over3YearsCustomerHandler>()!, true))
                 .AddSingleton<IDiscountHandler>(sp => new DiscountHandler(sp.GetService<NewCustomerHandler>()!, false));
+
+            return services;
+        }
+
+        private static IServiceCollection AddObserver(this IServiceCollection services)
+        {
+            services
+                .AddSingleton<IPattern, Core.Patterns.Observer>();
 
             return services;
         }

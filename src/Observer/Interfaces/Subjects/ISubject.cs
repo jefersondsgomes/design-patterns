@@ -4,8 +4,7 @@ namespace Design.Patterns.Observer.Interfaces.Subjects
 {
     public interface ISubject
     {
-        void Attach(IObserver user);
-        void Detach(IObserver user);
-        void Notify();
+        void Attach(IObserver observer);
+        void Detach(IObserver observer);
     }
 }

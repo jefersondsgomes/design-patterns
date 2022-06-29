@@ -4,13 +4,13 @@ using System.Collections.ObjectModel;
 
 namespace Design.Patterns.Observer.Observers
 {
-    public class UserObserver : IObserver
+    public class User : IObserver
     {
         public string? Name { get; set; }
 
         public readonly ICollection<ChannelKind> SubscribedChannels;
 
-        public UserObserver(string name)
+        public User(string name)
         {
             Name = name;
             SubscribedChannels = new Collection<ChannelKind>();
@@ -19,12 +19,10 @@ namespace Design.Patterns.Observer.Observers
         public void Subscribe(ChannelKind channel) =>
             SubscribedChannels.Add(channel);
 
-        public void Send(string subject)
+        public void Update()
         {
             foreach (var channel in SubscribedChannels)
-            {
-                Console.WriteLine($"Sending '{subject}' for user {Name} by {channel}");
-            }
+                Console.WriteLine($"Sending newsletter for {Name} by {channel}");
         }
     }
 }

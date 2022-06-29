@@ -1,5 +1,4 @@
 ﻿using Design.Patterns.Core.Interfaces.Patterns;
-using Design.Patterns.Observer.Models;
 using Design.Patterns.Observer.Models.Enums;
 using Design.Patterns.Observer.Observers;
 using Design.Patterns.Observer.Subjects;
@@ -11,7 +10,7 @@ namespace Design.Patterns.Core.Patterns
         public void Describe()
         {
             Console.WriteLine("Description:");
-            var description = "";
+            var description = "Provide an interface to notify observers when an object state is changed.";
             Console.WriteLine(description);
             Console.WriteLine(Environment.NewLine);
         }
@@ -19,36 +18,33 @@ namespace Design.Patterns.Core.Patterns
         public void Execute()
         {
             Console.WriteLine("Example:");
-            Console.WriteLine("Creating newsletter...");
-            var newsLetter = new NewsLetter
-            {
-                Subject = "Tech NewsLetter - Observer Pattern",
-                Content = "Let's talk about observer pattern in C#!"
-            };
-
-            Console.WriteLine("Creating newsletter subject...");
-            var observerNewsLetter = new NewsLetterSubject(newsLetter);
-
-            Console.WriteLine("Creating users...");
-            var jake = new UserObserver("Jake");
+            Console.WriteLine("Creating observers...");
+            var jake = new User("Jake");
             jake.Subscribe(ChannelKind.Email);
             jake.Subscribe(ChannelKind.Push);
 
-            var oleksandr = new UserObserver("Oleksandr");
+            var oleksandr = new User("Oleksandr");
             oleksandr.Subscribe(ChannelKind.Email);
             oleksandr.Subscribe(ChannelKind.Push);
             oleksandr.Subscribe(ChannelKind.WhatsApp);
 
-            var gabriel = new UserObserver("Gabriel");
+            var gabriel = new User("Gabriel");
             gabriel.Subscribe(ChannelKind.Email);
 
-            Console.WriteLine("Adding users on newsletter...");
-            observerNewsLetter.Attach(jake);
-            observerNewsLetter.Attach(oleksandr);
-            observerNewsLetter.Attach(gabriel);
+            Console.WriteLine("Creating newsletter...");
+            var newsLetter = new NewsLetter();
+            newsLetter.Title = "Tech NewsLetter - Observer Pattern";
+            newsLetter.Content = "Let's talk about observer pattern in C#!";
+            newsLetter.SetAsWritten();
 
-            Console.WriteLine("Notifying users...");
-            observerNewsLetter.Notify();
+            Console.WriteLine("Adding users on newsletter...");
+            newsLetter.Attach(jake);
+            newsLetter.Attach(oleksandr);
+            newsLetter.Attach(gabriel);
+
+            // Users will be notified when newsletter is published
+            Console.WriteLine("Publishing newsletter...");            
+            newsLetter.Publish();
         }
     }
 }
